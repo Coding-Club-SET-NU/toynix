@@ -1,0 +1,167 @@
+:root {
+  --bg: #050505;
+  --fg: #d2d2d2;
+  --muted: #7a7a7a;
+  --accent: #00c08b;
+  --prompt: #d2d2d2;
+  --cursor: #d2d2d2;
+  --font: "Fira Mono", "Cascadia Mono", "Consolas", "Menlo", "Monaco", monospace;
+  --font-size: 15px;
+  --line-height: 1.35;
+  --bar: #0b0b0b;
+  --bar-border: #1c1c1c;
+  --page-bg: #040404;
+  --page-bg-image: none;
+  --terminal-bg: rgba(0, 0, 0, 1);
+  --terminal-blur: 0px;
+  --frame-bg: rgba(0, 0, 0, 1);
+  --frame-blur: 0px;
+  --frame-bg-image: none;
+  --frame-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--page-bg);
+  background-image: var(--page-bg-image), radial-gradient(circle at 20% 20%, #101010, #040404 55%);
+  background-size: cover;
+  background-position: center;
+  color: var(--fg);
+  font-family: var(--font);
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 24px;
+  background: transparent;
+  background-color: var(--page-bg);
+  background-image: var(--page-bg-image);
+  background-size: cover;
+  background-position: center;
+}
+
+.frame {
+  width: min(1200px, 100%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--frame-border);
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  background-color: var(--frame-bg);
+  background-image: var(--frame-bg-image);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  backdrop-filter: blur(var(--frame-blur));
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: linear-gradient(90deg, var(--bar), #101010);
+  border-bottom: 1px solid var(--bar-border);
+  font-size: 13px;
+}
+
+.tty-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.tty-tab {
+  border: 1px solid #1f1f1f;
+  background: #0f0f0f;
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tty-tab.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(0, 192, 139, 0.25);
+}
+
+.tty-tab.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.topbar-status {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--muted);
+}
+
+.topbar-status strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.terminal {
+  width: min(1200px, 100%);
+  flex: 1;
+  padding: 20px 18px;
+  background: var(--terminal-bg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  line-height: var(--line-height);
+  font-size: var(--font-size);
+  backdrop-filter: blur(var(--terminal-blur));
+}
+
+.line {
+  display: block;
+}
+
+.line.dim {
+  color: var(--muted);
+}
+
+.prompt {
+  color: var(--prompt);
+}
+
+.cursor {
+  display: inline-block;
+  width: 9px;
+  height: 1.2em;
+  background: var(--cursor);
+  margin-left: 2px;
+  transform: translateY(2px);
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 720px) {
+  .terminal {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

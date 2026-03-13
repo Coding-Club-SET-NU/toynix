@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toynix TTY (Browser)</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <div class="frame" role="application" aria-label="Toynix Console">
+        <div class="topbar" role="toolbar" aria-label="TTY switcher">
+          <div class="tty-tabs">
+            <button class="tty-tab is-active" data-tty="tty1" aria-pressed="true">tty1</button>
+            <button class="tty-tab" data-tty="tty2">tty2</button>
+            <button class="tty-tab" data-tty="tty3">tty3</button>
+            <button class="tty-tab" data-tty="tty4">tty4</button>
+            <button class="tty-tab" data-tty="tty5">tty5</button>
+            <button class="tty-tab" data-tty="tty6">tty6</button>
+            <button class="tty-tab" data-tty="tty7">tty7</button>
+          </div>
+          <div class="topbar-status">
+            <span class="status-item">session: <strong id="tty-active">tty1</strong></span>
+            <span class="status-item" id="topbar-clock">--:--:--</span>
+          </div>
+        </div>
+        <div id="terminal" class="terminal" aria-label="Toynix TTY" role="region"></div>
+      </div>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
