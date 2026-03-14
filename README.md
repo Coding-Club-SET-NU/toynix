@@ -43,6 +43,10 @@ cd toynix
 
 > **Note:** If you experience `EACCES` or TTY lag on the live build, it is due to origin-isolation policies. Local hosting is recommended for the full "Root" experience.
 
+### **Login**
+
+Login as either `user` or `root` (`root` option bugged in the Live Demo due to origin-isolation policies.)
+
 ---
 
 ## 🛠️ System Architecture
